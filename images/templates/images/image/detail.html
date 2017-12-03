@@ -21,6 +21,12 @@
                 </a>
             </div>
             {{ image.description|linebreaks }}
+{{ image.translatedText }}
+<p>Anger :{{ image.angerScore }} |
+Disgust :{{ image.disgustScore }} |
+Fear :{{ image.fearScore }} |
+Joy :{{ image.joyScore }} |
+Sad :{{ image.sadScore }}</p>
         </div>
         <div class="image-likes">
             {% for user in image.users_like.all %}

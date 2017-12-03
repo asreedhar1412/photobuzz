@@ -12,6 +12,9 @@ from django.core.paginator import Paginator, EmptyPage, \
                                   PageNotAnInteger
 from actions.utils import create_action
 from django.conf import settings
+import json
+from watson_developer_cloud import ToneAnalyzerV3
+from watson_developer_cloud import LanguageTranslatorV2 as LanguageTranslator
 
 
 @login_required
@@ -43,6 +46,27 @@ def image_create(request):
 
 def image_detail(request, id, slug):
     image = get_object_or_404(Image, id=id, slug=slug)
+    tone_analyzer = ToneAnalyzerV3(
+        username='176a2db1-fc8e-48c2-a85c-cc5b640569a2',
+        password='HRfyi175CWo0',
+        version='2017-09-19')
+
+    language_translator = LanguageTranslator(
+        username='d5a5b0d1-c7b8-40f0-8ac7-bcb6f5b364a3',
+        password='IfEtTfRMi1EG')
+
+    data = json.dumps(tone_analyzer.tone(text=image.description),
+                      indent=1)  # converting to string and storing in the data
+    j = json.loads(data)
+    image.info = j['document_tone']['tone_categories'][0]['tones']
+    # post.info = json.dumps(post.info);
+    image.angerScore = image.info[0]['score']
+    image.disgustScore = image.info[1]['score']
+    image.fearScore = image.info[2]['score']
+    image.joyScore = image.info[3]['score']
+    image.sadScore = image.info[4]['score']
+    translation = language_translator.translate(text=image.description, source='en', target='fr')
+    image.translatedText = json.dumps(translation, indent=2, ensure_ascii=False)
     return render(request,
                   'images/image/detail.html',
                   {'section': 'images',
