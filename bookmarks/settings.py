@@ -153,7 +153,14 @@ LOGIN_REDIRECT_URL = reverse_lazy('dashboard')
 LOGIN_URL = reverse_lazy('login')
 LOGOUT_URL = reverse_lazy('logout')
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = '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'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Team PhotoBuzz <photobuzzapp@gmail.com>'
 
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
