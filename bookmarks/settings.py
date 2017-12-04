@@ -158,7 +158,7 @@ LOGOUT_URL = reverse_lazy('logout')
 EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = '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'
+EMAIL_HOST_PASSWORD = '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'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Team PhotoBuzz <photobuzzapp@gmail.com>'
 
