@@ -32,7 +32,7 @@ six==1.11.0
 urllib3==1.22
 virtualenv==15.0.1
 watson-developer-cloud==0.25.2
-Werkzeug==0.12.1
+Werkzeug==0.15.3
 whitenoise==3.3.0
 yahoo-finance==1.4.0
 psycopg2==2.7.1
