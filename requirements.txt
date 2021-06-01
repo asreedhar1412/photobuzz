@@ -29,7 +29,7 @@ pytz==2017.2
 requests==2.13.0
 simplejson==3.11.1
 six==1.11.0
-urllib3==1.22
+urllib3==1.26.5
 virtualenv==15.0.1
 watson-developer-cloud==0.25.2
 Werkzeug==0.12.1
